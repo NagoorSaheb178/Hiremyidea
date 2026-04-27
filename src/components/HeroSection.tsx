@@ -143,11 +143,11 @@ export default function HeroSection() {
           </div>
 
           {/* ── Phone Mockup + Product Strip ── */}
-          <div className="relative z-50 h-[500px] max-w-6xl mx-auto overflow-hidden mt-2">
+          <div className="relative z-50 h-[500px] sm:h-[600px] max-w-6xl mx-auto overflow-hidden mt-2">
 
             {/* PRODUCT STRIP - sits IN FRONT OF the phone */}
             <div
-              className="flex absolute inset-0 top-[158px] -translate-y-1/2 left-0 right-0 md:left-1/4 md:right-1/4 z-[20] justify-center translate-x-[15px] pointer-events-none"
+              className="flex absolute inset-0 top-[158px] -translate-y-1/2 left-0 right-0 md:left-1/4 md:right-1/4 z-[20] justify-center md:translate-x-[15px] pointer-events-none"
               style={{
                 maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
                 WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)'
@@ -194,7 +194,7 @@ export default function HeroSection() {
 
             {/* IPHONE MOCKUP */}
             <div
-              className="absolute left-[calc(50%+15px)] -translate-x-1/2 z-[10] w-[300px] h-[600px]"
+              className="absolute left-1/2 md:left-[calc(50%+15px)] -translate-x-1/2 z-[10] w-[300px] h-[600px]"
               style={{
                 top: '20px',
                 opacity: mounted ? 1 : 0,
