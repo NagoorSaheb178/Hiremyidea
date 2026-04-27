@@ -42,16 +42,16 @@ const AppleIcon = () => (
 );
 
 const products = [
-  { src: '/images/image_11.png', alt: 'Organic Bagels', detailsSrc: 'https://www.oliveapp.com/assets/images/how-to/slider/product-1-details.png' },
-  { src: '/images/image_4.png', alt: 'Cocao-nectar Bar, Oregon Peppermint', detailsSrc: 'https://www.oliveapp.com/assets/images/how-to/slider/product-2-details.png' },
-  { src: '/images/image_17.png', alt: 'Strawberry Vanilla Sparkling Tonic', detailsSrc: 'https://www.oliveapp.com/assets/images/how-to/slider/product-3-details.png' },
-  { src: '/images/image_19.png', alt: 'Fig and Olive Crackers', detailsSrc: 'https://www.oliveapp.com/assets/images/how-to/slider/product-4-details.png' },
-  { src: '/images/image_12.png', alt: 'San Pellegrino Sparkling Natural Mineral Water', detailsSrc: 'https://www.oliveapp.com/assets/images/how-to/slider/product-5-details.png' },
-  { src: '/images/image_13.png', alt: 'Sea Salt & Vinegar Potato Crisps', detailsSrc: 'https://www.oliveapp.com/assets/images/how-to/slider/product-6-details.png' },
-  { src: '/images/image_22.png', alt: 'Larabar Chocolate Chip Cookie Dough Fruit & Nut Bar', detailsSrc: 'https://www.oliveapp.com/assets/images/how-to/slider/product-7-details.png' },
-  { src: '/images/image_18.png', alt: 'Sourlittles', detailsSrc: 'https://www.oliveapp.com/assets/images/how-to/slider/product-8-details.png' },
-  { src: '/images/image_16.png', alt: 'Gradea Raw Pure Jersey Milk', detailsSrc: 'https://www.oliveapp.com/assets/images/how-to/slider/product-9-details.png' },
-  { src: '/images/image_14.png', alt: 'Late July Snacks Thin and Crispy Organic Tortilla', detailsSrc: 'https://www.oliveapp.com/assets/images/how-to/slider/product-10-details.png' },
+  { src: 'https://www.oliveapp.com/_next/image?url=%2Fassets%2Fimages%2Fhow-to%2Fslider%2Fproduct-1.png&w=256&q=75', alt: 'Organic Bagels', detailsSrc: 'https://www.oliveapp.com/assets/images/how-to/slider/product-1-details.png' },
+  { src: 'https://www.oliveapp.com/_next/image?url=%2Fassets%2Fimages%2Fhow-to%2Fslider%2Fproduct-2.png&w=256&q=75', alt: 'Cocao-nectar Bar, Oregon Peppermint', detailsSrc: 'https://www.oliveapp.com/assets/images/how-to/slider/product-2-details.png' },
+  { src: 'https://www.oliveapp.com/_next/image?url=%2Fassets%2Fimages%2Fhow-to%2Fslider%2Fproduct-3.png&w=256&q=75', alt: 'Strawberry Vanilla Sparkling Tonic', detailsSrc: 'https://www.oliveapp.com/assets/images/how-to/slider/product-3-details.png' },
+  { src: 'https://www.oliveapp.com/_next/image?url=%2Fassets%2Fimages%2Fhow-to%2Fslider%2Fproduct-4.png&w=256&q=75', alt: 'Fig and Olive Crackers', detailsSrc: 'https://www.oliveapp.com/assets/images/how-to/slider/product-4-details.png' },
+  { src: 'https://www.oliveapp.com/_next/image?url=%2Fassets%2Fimages%2Fhow-to%2Fslider%2Fproduct-5.png&w=256&q=75', alt: 'San Pellegrino Sparkling Natural Mineral Water', detailsSrc: 'https://www.oliveapp.com/assets/images/how-to/slider/product-5-details.png' },
+  { src: 'https://www.oliveapp.com/_next/image?url=%2Fassets%2Fimages%2Fhow-to%2Fslider%2Fproduct-6.png&w=256&q=75', alt: 'Sea Salt & Vinegar Potato Crisps', detailsSrc: 'https://www.oliveapp.com/assets/images/how-to/slider/product-6-details.png' },
+  { src: 'https://www.oliveapp.com/_next/image?url=%2Fassets%2Fimages%2Fhow-to%2Fslider%2Fproduct-7.png&w=256&q=75', alt: 'Larabar Chocolate Chip Cookie Dough Fruit & Nut Bar', detailsSrc: 'https://www.oliveapp.com/assets/images/how-to/slider/product-7-details.png' },
+  { src: 'https://www.oliveapp.com/_next/image?url=%2Fassets%2Fimages%2Fhow-to%2Fslider%2Fproduct-8.png&w=256&q=75', alt: 'Sourlittles', detailsSrc: 'https://www.oliveapp.com/assets/images/how-to/slider/product-8-details.png' },
+  { src: 'https://www.oliveapp.com/_next/image?url=%2Fassets%2Fimages%2Fhow-to%2Fslider%2Fproduct-9.png&w=256&q=75', alt: 'Gradea Raw Pure Jersey Milk', detailsSrc: 'https://www.oliveapp.com/assets/images/how-to/slider/product-9-details.png' },
+  { src: 'https://www.oliveapp.com/_next/image?url=%2Fassets%2Fimages%2Fhow-to%2Fslider%2Fproduct-10.png&w=256&q=75', alt: 'Late July Snacks Thin and Crispy Organic Tortilla', detailsSrc: 'https://www.oliveapp.com/assets/images/how-to/slider/product-10-details.png' },
 ];
 
 const allProducts = [...products, ...products, ...products];
