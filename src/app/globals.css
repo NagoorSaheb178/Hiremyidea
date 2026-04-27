@@ -1,0 +1,1394 @@
+@import "tailwindcss";
+
+/* ============================================================
+   OLIVE APP — COMPLETE CSS
+   Navbar + Hero Section + All Animations
+   Source: oliveapp.com (saveweb2zip archive)
+   ============================================================ */
+
+/* ============================================================
+   1. CSS CUSTOM PROPERTIES (Design Tokens / Variables)
+   ============================================================ */
+
+:root {
+  /* Brand Colors */
+  --primary-bg: #253612;
+  --primary-text: #fff;
+  --secondary-bg: #253612;
+  --secondary-text: #fff;
+  --text-primary: #1f3824;
+  --text-secondary: #1f1f1f99;
+
+  /* Border Radius */
+  --radius: .625rem;
+
+  /* Shadcn/Radix UI Tokens */
+  --background: oklch(100% 0 0);
+  --foreground: oklch(12.9% .042 264.695);
+  --card: oklch(100% 0 0);
+  --card-foreground: oklch(12.9% .042 264.695);
+  --popover: oklch(100% 0 0);
+  --popover-foreground: oklch(12.9% .042 264.695);
+  --primary: var(--primary-bg);
+  --primary-foreground: var(--primary-text);
+  --secondary: var(--secondary-bg);
+  --secondary-foreground: var(--secondary-text);
+  --muted: oklch(96.8% .007 247.896);
+  --muted-foreground: oklch(55.4% .046 257.417);
+  --accent: oklch(96.8% .007 247.896);
+  --accent-foreground: oklch(20.8% .042 265.755);
+  --destructive: oklch(57.7% .245 27.325);
+  --border: oklch(92.9% .013 255.508);
+  --input: oklch(92.9% .013 255.508);
+  --ring: oklch(70.4% .04 256.788);
+
+  /* Sidebar */
+  --sidebar: oklch(98.4% .003 247.858);
+  --sidebar-foreground: oklch(12.9% .042 264.695);
+  --sidebar-primary: oklch(20.8% .042 265.755);
+  --sidebar-primary-foreground: oklch(98.4% .003 247.858);
+  --sidebar-accent: oklch(96.8% .007 247.896);
+  --sidebar-accent-foreground: oklch(20.8% .042 265.755);
+  --sidebar-border: oklch(92.9% .013 255.508);
+  --sidebar-ring: oklch(70.4% .04 256.788);
+
+  /* Typography Scale */
+  --text-xs: .75rem;
+  --text-sm: .875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
+  --text-9xl: 8rem;
+
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Spacing */
+  --spacing: .25rem;
+
+  /* Container Sizes */
+  --container-sm: 24rem;
+  --container-md: 28rem;
+  --container-lg: 32rem;
+  --container-xl: 36rem;
+  --container-2xl: 42rem;
+  --container-3xl: 48rem;
+  --container-4xl: 56rem;
+  --container-5xl: 64rem;
+  --container-6xl: 72rem;
+  --container-7xl: 80rem;
+
+  /* Border Radius Extras */
+  --radius-xs: .125rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+
+  /* Easing */
+  --ease-out: cubic-bezier(0, 0, .2, 1);
+  --ease-in-out: cubic-bezier(.4, 0, .2, 1);
+
+  /* Default Transition */
+  --default-transition-duration: .35s;
+  --default-transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Blur */
+  --blur-sm: 8px;
+
+  /* Font Families */
+  --font-inter: "Inter", "Inter Fallback";
+  --font-dm-sans: "DM Sans", "DM Sans Fallback";
+  --font-pall: "pallFont", "pallFont Fallback";
+
+  /* Built-in Animations */
+  --animate-spin: spin 1s linear infinite;
+  --animate-pulse: pulse 2s cubic-bezier(.4, 0, .6, 1) infinite;
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-primary: #fff;
+    --text-secondary: #ededed;
+  }
+}
+
+/* ============================================================
+   2. FONT FACES
+   ============================================================ */
+
+/* Inter */
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(/fonts/e4af272ccee01ff0-s.p.woff2) format("woff2");
+  unicode-range: u+00??, u+0131, u+0152-0153, u+02bb-02bc, u+02c6, u+02da,
+    u+02dc, u+0304, u+0308, u+0329, u+2000-206f, u+20ac, u+2122, u+2191,
+    u+2193, u+2212, u+2215, u+feff, u+fffd;
+}
+
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial");
+  ascent-override: 90.44%;
+  descent-override: 22.52%;
+  line-gap-override: 0.00%;
+  size-adjust: 107.12%;
+}
+
+/* DM Sans */
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 100 1000;
+  font-display: swap;
+  src: url(/fonts/13971731025ec697-s.p.woff2) format("woff2");
+  unicode-range: u+00??, u+0131, u+0152-0153, u+02bb-02bc, u+02c6, u+02da,
+    u+02dc, u+0304, u+0308, u+0329, u+2000-206f, u+20ac, u+2122, u+2191,
+    u+2193, u+2212, u+2215, u+feff, u+fffd;
+}
+
+@font-face {
+  font-family: "DM Sans Fallback";
+  src: local("Arial");
+  ascent-override: 94.90%;
+  descent-override: 29.66%;
+  line-gap-override: 0.00%;
+  size-adjust: 104.53%;
+}
+
+/* Pall (custom heading font) */
+@font-face {
+  font-family: pallFont;
+  src: url(/fonts/ecaa078c765a8a2b-s.p.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "pallFont Fallback";
+  src: local("Arial");
+  ascent-override: 99.36%;
+  descent-override: 28.39%;
+  line-gap-override: 9.13%;
+  size-adjust: 98.63%;
+}
+
+
+/* ============================================================
+   3. GLOBAL RESETS & BASE
+   ============================================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  border: 0 solid;
+  margin: 0;
+  padding: 0;
+  border-color: var(--border);
+  outline-color: var(--ring);
+}
+
+@supports (color:color-mix(in lab, red, red)) {
+  * {
+    outline-color: color-mix(in oklab, var(--ring) 50%, transparent);
+  }
+}
+
+body {
+  font-family: var(--font-inter);
+  background-color: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+img,
+video,
+audio,
+canvas,
+embed,
+iframe,
+object,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: middle;
+}
+
+img {
+  overflow-clip-margin: content-box;
+  overflow: clip;
+}
+
+menu,
+ol,
+ul {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.nueu-font {
+  font-family: nueuFont, "nueuFont Fallback", sans-serif;
+}
+
+.pall-font {
+  font-family: pallFont, "pallFont Fallback", serif;
+}
+
+
+/* ============================================================
+   4. NAVBAR — DESKTOP
+   ============================================================ */
+
+/* Outer wrapper — full-width sticky bar */
+.navbar-desktop {
+  z-index: 60;
+  margin-inline: auto;
+  display: none;
+  /* hidden on mobile, shown at lg */
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-self: flex-start;
+  border-radius: 9999px;
+  font-family: var(--font-pall);
+  position: sticky;
+  inset-inline: 0;
+  top: calc(var(--spacing) * 40);
+  /* top-40 */
+}
+
+@media (min-width: 64rem) {
+  .navbar-desktop {
+    display: flex;
+  }
+}
+
+/* Left: Logo link */
+.navbar-logo-link {
+  position: relative;
+  z-index: 20;
+  margin-right: calc(var(--spacing) * 4);
+  display: flex;
+  align-items: center;
+  column-gap: calc(var(--spacing) * 2);
+  padding: calc(var(--spacing) * 1) calc(var(--spacing) * 2);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-normal);
+  color: black;
+}
+
+/* Logo SVG */
+.navbar-logo-svg {
+  width: calc(var(--spacing) * 60);
+  /* w-60 */
+  height: calc(var(--spacing) * 14);
+  /* h-14 */
+}
+
+@media (min-width: 48rem) {
+  .navbar-logo-svg {
+    width: calc(var(--spacing) * 70);
+  }
+
+  /* md:w-70 */
+}
+
+/* Center: Nav links (absolutely positioned) */
+.navbar-center {
+  position: absolute;
+  inset-inline: 0;
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: oklch(44.2% .017 285.786);
+  /* text-zinc-600 */
+  transition-property: color;
+  transition-duration: .2s;
+  transition-timing-function: var(--ease-in-out);
+}
+
+.navbar-center:hover {
+  color: oklch(27.4% .006 286.033);
+}
+
+/* hover:text-zinc-800 */
+
+/* Nav <nav> element */
+.navbar-nav {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: calc(var(--spacing) * 2);
+  border-radius: 3.40282e+38px;
+  font-family: var(--font-pall);
+  padding: calc(var(--spacing) * 3) calc(var(--spacing) * 4);
+}
+
+/* Standard nav link */
+.navbar-link {
+  position: relative;
+  color: var(--color-neutral-600, oklch(43.9% 0 0));
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
+  font-family: var(--font-inter);
+  border-radius: calc(var(--radius) - 2px);
+  transition-property: background-color;
+  transition-duration: var(--default-transition-duration);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+@media (hover: hover) {
+  .navbar-link:hover {
+    background-color: color-mix(in oklab, black 3%, transparent);
+  }
+}
+
+/* Dropdown trigger link */
+.navbar-dropdown-trigger {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 1);
+  color: oklch(37.1% 0 0);
+  /* text-neutral-700 */
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
+  border-radius: calc(var(--radius) - 2px);
+  transition-property: opacity, background-color;
+  transition-duration: var(--default-transition-duration);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+@media (hover: hover) {
+  .navbar-dropdown-trigger:hover {
+    opacity: 0.9;
+    background-color: color-mix(in oklab, black 3%, transparent);
+  }
+}
+
+/* Chevron icon inside dropdown trigger */
+.navbar-chevron {
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+  transition-property: transform;
+  transition-duration: var(--default-transition-duration);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+.navbar-dropdown-trigger[aria-expanded="true"] .navbar-chevron {
+  rotate: 180deg;
+}
+
+/* Right: Sign in link */
+.navbar-signin {
+  color: var(--primary);
+  margin-right: calc(var(--spacing) * 4);
+  cursor: pointer;
+  position: relative;
+  z-index: 40;
+}
+
+/* Right: "Get Olive" CTA button */
+.navbar-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-family: var(--font-sans, sans-serif);
+  justify-content: center;
+  gap: calc(var(--spacing) * 2);
+  white-space: nowrap;
+  border-radius: 3.40282e+38px;
+  /* rounded-full */
+  font-weight: var(--font-weight-medium);
+  font-size: var(--text-base);
+  padding: calc(var(--spacing) * 3) calc(var(--spacing) * 6);
+  margin-right: 0.5rem;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  box-shadow: 0 4px 6px -1px #0000001a, 0 2px 4px -2px #0000001a;
+  position: relative;
+  z-index: 50;
+  transition-property: background-color;
+  transition-duration: var(--default-transition-duration);
+  transition-timing-function: var(--default-transition-timing-function);
+}
+
+@media (hover: hover) {
+  .navbar-cta-btn:hover {
+    background-color: color-mix(in oklab, var(--primary) 90%, transparent);
+  }
+}
+
+.navbar-cta-btn svg {
+  pointer-events: none;
+  flex-shrink: 0;
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+}
+
+
+/* ============================================================
+   5. NAVBAR — MOBILE
+   ============================================================ */
+
+/* Mobile wrapper */
+.navbar-mobile {
+  position: relative;
+  margin-inline: auto;
+  display: flex;
+  width: 100%;
+  max-width: calc(100vw - 2rem);
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
+  font-family: var(--font-pall);
+}
+
+@media (min-width: 64rem) {
+  .navbar-mobile {
+    display: none;
+  }
+
+  /* lg:hidden */
+}
+
+/* Mobile inner row */
+.navbar-mobile-row {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Mobile hamburger icon */
+.navbar-hamburger {
+  color: black;
+  flex-shrink: 0;
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+  margin-left: calc(var(--spacing) * 4);
+}
+
+
+/* ============================================================
+   6. NAVBAR — OUTER PAGE CONTAINER
+   ============================================================ */
+
+/* The page wrapper that holds both navbar + hero */
+.page-wrapper {
+  margin-top: calc(var(--spacing) * 4);
+  margin-bottom: calc(var(--spacing) * 10);
+  padding-inline: calc(var(--spacing) * 4);
+  margin-inline: auto;
+  max-width: var(--container-7xl);
+}
+
+@media (min-width: 48rem) {
+  .page-wrapper {
+    margin-top: calc(var(--spacing) * 8);
+    margin-bottom: calc(var(--spacing) * 24);
+    padding-inline: calc(var(--spacing) * 8);
+  }
+}
+
+@media (min-width: 96rem) {
+  .page-wrapper {
+    max-width: var(--container-7xl);
+  }
+}
+
+/* The rounded card that wraps navbar + hero content */
+.hero-card {
+  border: 1px solid oklch(92.2% 0 0);
+  /* border-neutral-200 */
+  position: relative;
+  border-radius: var(--radius-2xl);
+  background-image: linear-gradient(#f5faf6 0% 100%);
+}
+
+/* Inner z-layer */
+.hero-card-inner {
+  position: relative;
+  width: 100%;
+  z-index: 10;
+}
+
+/* Padding wrapper inside the card */
+.hero-card-padding {
+  padding-bottom: calc(var(--spacing) * 12);
+  padding: calc(var(--spacing) * 2);
+}
+
+
+/* ============================================================
+   7. HERO SECTION — CONTENT
+   ============================================================ */
+
+/* Social proof / avatars row */
+.hero-social-proof {
+  margin-bottom: calc(var(--spacing) * 2);
+  display: flex;
+  gap: calc(var(--spacing) * 2);
+  flex-direction: column;
+}
+
+@media (min-width: 40rem) {
+  .hero-social-proof {
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+/* Avatar group */
+.hero-avatars {
+  margin-bottom: calc(var(--spacing) * 4);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 40rem) {
+  .hero-avatars {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 48rem) {
+  .hero-avatars {
+    justify-content: flex-start;
+  }
+}
+
+/* Single avatar wrapper */
+.hero-avatar {
+  position: relative;
+  margin-right: calc(var(--spacing) * -3);
+  /* -mr-3 overlap */
+}
+
+/* Avatar image container */
+.hero-avatar-img-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 3.40282e+38px;
+  border: 2px solid oklch(92.2% 0 0);
+  /* border-neutral-200 */
+}
+
+/* Avatar image */
+.hero-avatar-img {
+  width: calc(var(--spacing) * 8);
+  height: calc(var(--spacing) * 8);
+  object-fit: cover;
+  object-position: top;
+}
+
+/* "+3k" badge */
+.hero-avatar-badge {
+  z-index: 10;
+  width: calc(var(--spacing) * 8);
+  height: calc(var(--spacing) * 8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3.40282e+38px;
+  border: 2px solid oklch(92.2% 0 0);
+  background-image: linear-gradient(135deg,
+      rgba(231, 230, 230, 0.5) 0%,
+      rgba(203, 203, 203, 0.5) 97%);
+}
+
+.hero-avatar-badge span {
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  color: #0000004d;
+  /* text-black/30 */
+}
+
+/* Social proof tagline */
+.hero-tagline {
+  font-family: var(--font-dm-sans);
+  font-size: var(--text-xs);
+  color: oklch(43.9% 0 0);
+  /* text-neutral-600 */
+}
+
+/* Main H1 headline */
+.hero-headline {
+  position: relative;
+  z-index: 50;
+  padding-top: calc(var(--spacing) * 4);
+  padding-bottom: calc(var(--spacing) * 2);
+  margin-inline: auto;
+  margin-top: calc(var(--spacing) * 2);
+  max-width: var(--container-2xl);
+  color: var(--primary);
+  text-wrap: balance;
+  text-align: center;
+  font-family: pallFont, "pallFont Fallback";
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight, -.025em);
+  font-size: var(--text-4xl);
+  line-height: 1.1;
+}
+
+@media (min-width: 48rem) {
+  .hero-headline {
+    padding-top: calc(var(--spacing) * 8);
+    font-size: var(--text-7xl);
+  }
+}
+
+/* Hero subtitle paragraph */
+.hero-subtitle {
+  position: relative;
+  z-index: 50;
+  margin-inline: auto;
+  margin-top: calc(var(--spacing) * 2);
+  max-width: var(--container-md);
+  padding-inline: calc(var(--spacing) * 4);
+  text-align: center;
+  color: #1f1f1f99;
+  font-size: var(--text-sm);
+}
+
+@media (min-width: 48rem) {
+  .hero-subtitle {
+    font-size: var(--text-lg);
+  }
+}
+
+/* CTA buttons row */
+.hero-cta-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: calc(var(--spacing) * 4) calc(var(--spacing) * 8) calc(var(--spacing) * 2);
+  margin-inline: auto;
+  gap: calc(var(--spacing) * 2);
+}
+
+@media (min-width: 48rem) {
+  .hero-cta-row {
+    flex-direction: row;
+    gap: calc(var(--spacing) * 6);
+  }
+}
+
+/* "Download for iOS" button - Clean version of your provided Tailwind classes */
+.hero-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-family: var(--font-inter);
+  justify-content: center;
+  gap: 0.5rem;
+  /* gap-2 */
+  white-space: nowrap;
+  border-radius: 9999px;
+  /* rounded-full */
+  font-weight: 500;
+  /* font-medium */
+  font-size: 0.875rem;
+  /* text-sm */
+  padding: 0.625rem 1rem;
+  /* px-4 py-2.5 */
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  /* shadow-md */
+  transition: all 0.2s;
+  flex-shrink: 0;
+  outline: none;
+}
+
+.hero-cta-btn:hover {
+  background-color: color-mix(in oklab, var(--primary) 90%, transparent);
+}
+
+.hero-cta-btn svg {
+  pointer-events: none;
+  flex-shrink: 0;
+  width: 1rem;
+  /* size-4 */
+  height: 1rem;
+}
+
+/* Hero product image slider container */
+.hero-image-slider {
+  position: relative;
+  z-index: 50;
+  min-height: 500px;
+  max-width: var(--container-6xl);
+  margin-inline: auto;
+  overflow: hidden;
+}
+
+/* Floating product images row (the scrolling strip) */
+.hero-products-strip {
+  display: flex;
+  position: absolute;
+  inset: 0;
+  top: 25%;
+  translate: 0 -50%;
+  left: 5%;
+  right: 5%;
+  z-index: 2;
+  justify-content: center;
+  gap: 12px;
+  /* mask fade edges */
+  -webkit-mask-image:
+    linear-gradient(to left, black 50%, transparent 100%),
+    linear-gradient(to right, black 50%, transparent 100%);
+  mask-image:
+    linear-gradient(to left, black 50%, transparent 100%),
+    linear-gradient(to right, black 50%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+/* Individual product thumbnail */
+.hero-product-thumb {
+  position: relative;
+  width: calc(var(--spacing) * 20);
+  height: calc(var(--spacing) * 20);
+  flex-shrink: 0;
+}
+
+.hero-product-thumb img {
+  border-radius: var(--radius-2xl);
+  object-fit: cover;
+}
+
+/* Phone frame elements */
+.hero-phone-notch {
+  position: relative;
+  top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  left: 50%;
+  translate: -50% 0;
+  background-color: black;
+  height: 26px;
+  width: 100px;
+  border-radius: 3.40282e+38px;
+  z-index: 5;
+}
+
+.hero-phone-notch-dot {
+  height: 16px;
+  width: 16px;
+  margin-right: 5px;
+  border-radius: 3.40282e+38px;
+  position: absolute;
+  right: 0;
+  background-image: radial-gradient(50% 50% at 50% 50%,
+      rgba(255, 255, 255, 0.04) 72%,
+      rgba(255, 255, 255, 0.16) 100%);
+}
+
+/* Unused Phone Classes Removed - Using Tailwind in Component */
+
+
+/* ============================================================
+   8. KEYFRAME ANIMATIONS
+   ============================================================ */
+
+/* Spin — used by .animate-spin */
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* Pulse — used by .animate-pulse */
+@keyframes pulse {
+  50% {
+    opacity: .5;
+  }
+}
+
+/* Enter — used by animate-in utility */
+@keyframes enter {
+  0% {
+    opacity: var(--tw-enter-opacity, 1);
+    transform: translate3d(var(--tw-enter-translate-x, 0),
+        var(--tw-enter-translate-y, 0),
+        0) scale3d(var(--tw-enter-scale, 1),
+        var(--tw-enter-scale, 1),
+        var(--tw-enter-scale, 1)) rotate(var(--tw-enter-rotate, 0));
+    filter: blur(var(--tw-enter-blur, 0));
+  }
+}
+
+/* Exit — used by animate-out utility */
+@keyframes exit {
+  to {
+    opacity: var(--tw-exit-opacity, 1);
+    transform: translate3d(var(--tw-exit-translate-x, 0),
+        var(--tw-exit-translate-y, 0),
+        0) scale3d(var(--tw-exit-scale, 1),
+        var(--tw-exit-scale, 1),
+        var(--tw-exit-scale, 1)) rotate(var(--tw-exit-rotate, 0));
+    filter: blur(var(--tw-exit-blur, 0));
+  }
+}
+
+/* Accordion open */
+@keyframes accordion-down {
+  0% {
+    height: 0;
+  }
+
+  to {
+    height: var(--radix-accordion-content-height, auto);
+  }
+}
+
+/* Accordion close */
+@keyframes accordion-up {
+  0% {
+    height: var(--radix-accordion-content-height, auto);
+  }
+
+  to {
+    height: 0;
+  }
+}
+
+/* Scroll animation for products */
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-left {
+  animation: scrollLeft 30s linear infinite;
+}
+
+/* Fade In Up Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in-up-delay-1 {
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-up-delay-2 {
+  animation: fadeInUp 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+@keyframes phoneSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(400px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-phone-slide-up {
+  animation: phoneSlideUp 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s forwards;
+  opacity: 0;
+}
+
+/* Fade in up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease-out forwards;
+}
+
+.animate-fade-in-up-delay-1 {
+  animation: fadeInUp 0.7s ease-out 0.15s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-up-delay-2 {
+  animation: fadeInUp 0.7s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-up-delay-3 {
+  animation: fadeInUp 0.7s ease-out 0.45s forwards;
+  opacity: 0;
+}
+
+/* Badge pulse */
+@keyframes badgePulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(31, 56, 36, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 8px 4px rgba(31, 56, 36, 0.1);
+  }
+}
+
+.badge-pulse {
+  animation: badgePulse 3s ease-in-out infinite;
+}
+
+
+/* ============================================================
+   9. ANIMATION UTILITY CLASSES
+   ============================================================ */
+
+/* Spin utility */
+.animate-spin {
+  animation: var(--animate-spin);
+}
+
+/* Pulse utility */
+.animate-pulse {
+  animation: var(--animate-pulse);
+}
+
+/* Animate-in (enter) */
+.animate-in {
+  animation: enter var(--tw-animation-duration, var(--tw-duration, .15s)) var(--tw-ease, ease) var(--tw-animation-delay, 0s) var(--tw-animation-iteration-count, 1) var(--tw-animation-direction, normal) var(--tw-animation-fill-mode, none);
+}
+
+/* Animate-out (exit) */
+.animate-out {
+  animation: exit var(--tw-animation-duration, var(--tw-duration, .15s)) var(--tw-ease, ease) var(--tw-animation-delay, 0s) var(--tw-animation-iteration-count, 1) var(--tw-animation-direction, normal) var(--tw-animation-fill-mode, none);
+}
+
+/* Accordion open */
+.animate-accordion-down {
+  animation: accordion-down var(--tw-animation-duration, var(--tw-duration, .2s)) var(--tw-ease, ease-out) var(--tw-animation-delay, 0s) var(--tw-animation-iteration-count, 1) var(--tw-animation-direction, normal) var(--tw-animation-fill-mode, none);
+}
+
+/* Accordion close */
+.animate-accordion-up {
+  animation: accordion-up var(--tw-animation-duration, var(--tw-duration, .2s)) var(--tw-ease, ease-out) var(--tw-animation-delay, 0s) var(--tw-animation-iteration-count, 1) var(--tw-animation-direction, normal) var(--tw-animation-fill-mode, none);
+}
+
+/* Enter state modifiers */
+.fade-in-0 {
+  --tw-enter-opacity: 0;
+}
+
+.zoom-in-95 {
+  --tw-enter-scale: .95;
+}
+
+.slide-in-from-top {
+  --tw-enter-translate-y: -100%;
+}
+
+.slide-in-from-bottom {
+  --tw-enter-translate-y: 100%;
+}
+
+.slide-in-from-left {
+  --tw-enter-translate-x: -100%;
+}
+
+.slide-in-from-right {
+  --tw-enter-translate-x: 100%;
+}
+
+.slide-in-from-top-2 {
+  --tw-enter-translate-y: calc(2 * var(--spacing) * -1);
+}
+
+.slide-in-from-bottom-2 {
+  --tw-enter-translate-y: calc(2 * var(--spacing));
+}
+
+.slide-in-from-left-2 {
+  --tw-enter-translate-x: calc(2 * var(--spacing) * -1);
+}
+
+.slide-in-from-right-2 {
+  --tw-enter-translate-x: calc(2 * var(--spacing));
+}
+
+/* Exit state modifiers */
+.fade-out-0 {
+  --tw-exit-opacity: 0;
+}
+
+.zoom-out-95 {
+  --tw-exit-scale: .95;
+}
+
+.slide-out-to-top {
+  --tw-exit-translate-y: -100%;
+}
+
+.slide-out-to-bottom {
+  --tw-exit-translate-y: 100%;
+}
+
+.slide-out-to-left {
+  --tw-exit-translate-x: -100%;
+}
+
+.slide-out-to-right {
+  --tw-exit-translate-x: 100%;
+}
+
+/* Duration utilities */
+.duration-200 {
+  --tw-duration: .2s;
+  transition-duration: .2s;
+}
+
+.duration-300 {
+  --tw-duration: .3s;
+  transition-duration: .3s;
+}
+
+.duration-500 {
+  --tw-duration: .5s;
+  transition-duration: .5s;
+}
+
+.duration-1000 {
+  --tw-duration: 1s;
+  transition-duration: 1s;
+}
+
+/* Easing utilities */
+.ease-linear {
+  --tw-ease: linear;
+  transition-timing-function: linear;
+}
+
+.ease-in-out {
+  --tw-ease: var(--ease-in-out);
+  transition-timing-function: var(--ease-in-out);
+}
+
+.ease-out {
+  --tw-ease: var(--ease-out);
+  transition-timing-function: var(--ease-out);
+}
+
+
+/* ============================================================
+   10. TRANSITION UTILITIES (used on navbar & hero elements)
+   ============================================================ */
+
+.transition {
+  transition-property: color, background-color, border-color, outline-color,
+    text-decoration-color, fill, stroke, opacity, box-shadow, transform,
+    translate, scale, rotate, filter, backdrop-filter;
+  transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+  transition-duration: var(--tw-duration, var(--default-transition-duration));
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+  transition-duration: var(--tw-duration, var(--default-transition-duration));
+}
+
+.transition-colors {
+  transition-property: color, background-color, border-color, outline-color,
+    text-decoration-color, fill, stroke;
+  transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+  transition-duration: var(--tw-duration, var(--default-transition-duration));
+}
+
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+  transition-duration: var(--tw-duration, var(--default-transition-duration));
+}
+
+.transition-transform {
+  transition-property: transform, translate, scale, rotate;
+  transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+  transition-duration: var(--tw-duration, var(--default-transition-duration));
+}
+
+.transition-shadow {
+  transition-property: box-shadow;
+  transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+  transition-duration: var(--tw-duration, var(--default-transition-duration));
+}
+
+
+/* ============================================================
+   11. HOVER & INTERACTIVE STATES (navbar & hero specific)
+   ============================================================ */
+
+/* Button hover — primary */
+@media (hover: hover) {
+  .btn-primary:hover {
+    background-color: color-mix(in oklab, var(--primary) 90%, transparent);
+  }
+}
+
+/* Button hover — outline / ghost */
+@media (hover: hover) {
+  .btn-outline:hover {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+  }
+}
+
+/* Opacity hover helpers */
+@media (hover: hover) {
+  .hover\:opacity-70:hover {
+    opacity: .70;
+  }
+
+  .hover\:opacity-90:hover {
+    opacity: .90;
+  }
+}
+
+/* Nav link hover */
+@media (hover: hover) {
+  .nav-link:hover {
+    background-color: color-mix(in oklab, black 3%, transparent);
+  }
+}
+
+/* Group hover — product card lift */
+@media (hover: hover) {
+  .group:hover .group-hover\:-translate-y-2 {
+    --tw-translate-y: calc(var(--spacing) * -2);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+
+  .group:hover .group-hover\:scale-103 {
+    scale: 1.03;
+  }
+
+  .group:hover .group-hover\:shadow-xl {
+    --tw-shadow: 0 20px 25px -5px #0000001a, 0 8px 10px -6px #0000001a;
+    box-shadow: var(--tw-shadow);
+  }
+}
+
+
+/* ============================================================
+   12. BACKDROP BLUR (used on navbar glassmorphism)
+   ============================================================ */
+
+.backdrop-blur-sm {
+  --tw-backdrop-blur: blur(var(--blur-sm));
+  -webkit-backdrop-filter: var(--tw-backdrop-blur);
+  backdrop-filter: var(--tw-backdrop-blur);
+}
+
+
+/* ============================================================
+   13. STATE-BASED ANIMATION CLASSES
+       (data-[state=open/closed] patterns from the site)
+   ============================================================ */
+
+/* Open state */
+[data-state="open"].animate-in,
+.data-\[state\=open\]\:animate-in[data-state="open"] {
+  animation: enter .15s ease 0s 1 normal none;
+}
+
+[data-state="open"].fade-in-0 {
+  --tw-enter-opacity: 0;
+}
+
+[data-state="open"].zoom-in-95 {
+  --tw-enter-scale: .95;
+}
+
+[data-state="open"].duration-500 {
+  --tw-duration: .5s;
+  transition-duration: .5s;
+}
+
+/* Closed state */
+[data-state="closed"].animate-out,
+.data-\[state\=closed\]\:animate-out[data-state="closed"] {
+  animation: exit .15s ease 0s 1 normal none;
+}
+
+[data-state="closed"].fade-out-0 {
+  --tw-exit-opacity: 0;
+}
+
+[data-state="closed"].zoom-out-95 {
+  --tw-exit-scale: .95;
+}
+
+[data-state="closed"].duration-300 {
+  --tw-duration: .3s;
+  transition-duration: .3s;
+}
+
+/* Slide directions for popover/dropdown (open) */
+[data-side="bottom"][data-state="open"] {
+  --tw-enter-translate-y: calc(2 * var(--spacing) * -1);
+}
+
+[data-side="top"][data-state="open"] {
+  --tw-enter-translate-y: calc(2 * var(--spacing));
+}
+
+[data-side="left"][data-state="open"] {
+  --tw-enter-translate-x: calc(2 * var(--spacing));
+}
+
+[data-side="right"][data-state="open"] {
+  --tw-enter-translate-x: calc(2 * var(--spacing) * -1);
+}
+
+/* Slide directions for popover/dropdown (closed) */
+[data-side="bottom"][data-state="closed"] {
+  --tw-exit-translate-y: 100%;
+}
+
+[data-side="top"][data-state="closed"] {
+  --tw-exit-translate-y: -100%;
+}
+
+[data-side="left"][data-state="closed"] {
+  --tw-exit-translate-x: -100%;
+}
+
+[data-side="right"][data-state="closed"] {
+  --tw-exit-translate-x: 100%;
+}
+
+/* Translate on open */
+[data-side="bottom"] {
+  translate: 0 calc(var(--spacing) * 1);
+}
+
+[data-side="top"] {
+  translate: 0 calc(var(--spacing) * -1);
+}
+
+[data-side="left"] {
+  translate: calc(var(--spacing) * -1) 0;
+}
+
+[data-side="right"] {
+  translate: calc(var(--spacing) * 1) 0;
+}
+
+/* Accordion */
+[data-state="open"].animate-accordion-down {
+  animation: accordion-down .2s ease-out;
+}
+
+[data-state="closed"].animate-accordion-up {
+  animation: accordion-up .2s ease-out;
+}
+
+
+/* ============================================================
+   14. BLUR / FILTER UTILITIES (used in hero decorative blobs)
+   ============================================================ */
+
+.blur-80 {
+  --tw-blur: blur(80px);
+  filter: var(--tw-blur);
+}
+
+.blur-300 {
+  --tw-blur: blur(300px);
+  filter: var(--tw-blur);
+}
+
+
+/* ============================================================
+   15. MASK UTILITIES (hero product strip fade edges)
+   ============================================================ */
+
+.mask-l-from-50\% {
+  --tw-mask-left: linear-gradient(to right, transparent, black 50%);
+  mask-image: var(--tw-mask-left);
+  -webkit-mask-image: var(--tw-mask-left);
+}
+
+.mask-r-from-50\% {
+  --tw-mask-right: linear-gradient(to left, transparent, black 50%);
+  mask-image: var(--tw-mask-right);
+  -webkit-mask-image: var(--tw-mask-right);
+}
+
+/* Combined version for both sides */
+.mask-l-from-50\%.mask-r-from-50\% {
+  --tw-mask-linear: linear-gradient(to right, transparent, black 50%), linear-gradient(to left, transparent, black 50%);
+  mask-image: var(--tw-mask-linear);
+  -webkit-mask-image: var(--tw-mask-linear);
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in;
+}
