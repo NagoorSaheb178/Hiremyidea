@@ -5,10 +5,10 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
 const avatars = [
-  { src: '/images/image_1.jpg', alt: 'John Doe' },
-  { src: '/images/image.jpg', alt: 'Robert Johnson' },
-  { src: '/images/image_2.jpg', alt: 'Jane Smith' },
-  { src: '/images/image_3.jpg', alt: 'Emily Davis' },
+  { src: 'https://www.oliveapp.com/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1599566150163-29194dcaad36%3Fixlib%3Drb-4.0.3%26ixid%3DM3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%253D%253D%26auto%3Dformat%26fit%3Dcrop%26w%3D3387%26q%3D80&w=256&q=75', alt: 'John Doe' },
+  { src: 'https://www.oliveapp.com/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1535713875002-d1d0cf377fde%3Fixlib%3Drb-4.0.3%26ixid%3DM3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww%26auto%3Dformat%26fit%3Dcrop%26w%3D800%26q%3D60&w=256&q=75', alt: 'Robert Johnson' },
+  { src: 'https://www.oliveapp.com/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1580489944761-15a19d654956%3Fixlib%3Drb-4.0.3%26ixid%3DM3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww%26auto%3Dformat%26fit%3Dcrop%26w%3D800%26q%3D60&w=256&q=75', alt: 'Jane Smith' },
+  { src: 'https://www.oliveapp.com/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1438761681033-6461ffad8d80%3Fixlib%3Drb-4.0.3%26ixid%3DM3wxMjA3fDB8MHxzZWFyY2h8MTB8fGF2YXRhcnxlbnwwfHwwfHx8MA%253D%253D%26auto%3Dformat%26fit%3Dcrop%26w%3D800%26q%3D60&w=256&q=75', alt: 'Emily Davis' },
 ];
 
 const SafeBadgeIcon = () => (
@@ -138,7 +138,7 @@ export default function HeroSection() {
               className="text-sm font-medium text-neutral-800 hover:text-neutral-600 transition-colors flex items-center gap-1"
             >
               Join the Olive Community
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
             </Link>
           </div>
 
