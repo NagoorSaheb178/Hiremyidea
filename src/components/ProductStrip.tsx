@@ -5,16 +5,16 @@ import { useEffect, useRef } from 'react';
 
 // The 10 real product images from the original site
 const products = [
-  { src: '/images/image_11.png', alt: 'Organic Bagels' },
-  { src: '/images/image_4.png', alt: 'Cocao-nectar Bar, Oregon Peppermint' },
-  { src: '/images/image_17.png', alt: 'Strawberry Vanilla Sparkling Tonic' },
-  { src: '/images/image_19.png', alt: 'Fig and Olive Crackers' },
-  { src: '/images/image_12.png', alt: 'San Pellegrino Sparkling Natural Mineral Water' },
-  { src: '/images/image_13.png', alt: 'Sea Salt & Vinegar Potato Crisps' },
-  { src: '/images/image_22.png', alt: 'Larabar Chocolate Chip Cookie Dough' },
-  { src: '/images/image_18.png', alt: 'Sourlittles' },
-  { src: '/images/image_16.png', alt: 'Gradea Raw Pure Jersey Milk' },
-  { src: '/images/image_14.png', alt: 'Late July Snacks Organic Tortilla' },
+  { src: 'https://www.oliveapp.com/_next/image?url=%2Fassets%2Fimages%2Fhow-to%2Fslider%2Fproduct-1.png&w=256&q=75', alt: 'Organic Bagels' },
+  { src: 'https://www.oliveapp.com/_next/image?url=%2Fassets%2Fimages%2Fhow-to%2Fslider%2Fproduct-2.png&w=256&q=75', alt: 'Cocao-nectar Bar, Oregon Peppermint' },
+  { src: 'https://www.oliveapp.com/_next/image?url=%2Fassets%2Fimages%2Fhow-to%2Fslider%2Fproduct-3.png&w=256&q=75', alt: 'Strawberry Vanilla Sparkling Tonic' },
+  { src: 'https://www.oliveapp.com/_next/image?url=%2Fassets%2Fimages%2Fhow-to%2Fslider%2Fproduct-4.png&w=256&q=75', alt: 'Fig and Olive Crackers' },
+  { src: 'https://www.oliveapp.com/_next/image?url=%2Fassets%2Fimages%2Fhow-to%2Fslider%2Fproduct-5.png&w=256&q=75', alt: 'San Pellegrino Sparkling Natural Mineral Water' },
+  { src: 'https://www.oliveapp.com/_next/image?url=%2Fassets%2Fimages%2Fhow-to%2Fslider%2Fproduct-6.png&w=256&q=75', alt: 'Sea Salt & Vinegar Potato Crisps' },
+  { src: 'https://www.oliveapp.com/_next/image?url=%2Fassets%2Fimages%2Fhow-to%2Fslider%2Fproduct-7.png&w=256&q=75', alt: 'Larabar Chocolate Chip Cookie Dough' },
+  { src: 'https://www.oliveapp.com/_next/image?url=%2Fassets%2Fimages%2Fhow-to%2Fslider%2Fproduct-8.png&w=256&q=75', alt: 'Sourlittles' },
+  { src: 'https://www.oliveapp.com/_next/image?url=%2Fassets%2Fimages%2Fhow-to%2Fslider%2Fproduct-9.png&w=256&q=75', alt: 'Gradea Raw Pure Jersey Milk' },
+  { src: 'https://www.oliveapp.com/_next/image?url=%2Fassets%2Fimages%2Fhow-to%2Fslider%2Fproduct-10.png&w=256&q=75', alt: 'Late July Snacks Organic Tortilla' },
 ];
 
 // Duplicate for seamless loop
